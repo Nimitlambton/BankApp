@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,21 +107,23 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
             String userAccountamt  =  String.valueOf(amt.getText());
             int userAmtInt = Integer.parseInt(userAccountamt);
 
-            int  toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
-            int toaddamount = toAmountTransfer + userAmtInt ;
-            int deduct = a - userAmtInt;
 
-            System.out.println(toaddamount);
-            System.out.println(deduct);
 
-            MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
-            MainActivity.newuser[userAccInt].setAccbal(toaddamount);
+                int toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
+                int toaddamount = toAmountTransfer + userAmtInt;
+                int deduct = a - userAmtInt;
+
+                System.out.println(toaddamount);
+                System.out.println(deduct);
+
+                MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
+                MainActivity.newuser[userAccInt].setAccbal(toaddamount);
 
 
         }
 
         else {
-              /*
+
             String userAccountno  =  String.valueOf(acNo.getText());
             userAccInt = Integer.parseInt(userAccountno);
 
@@ -128,13 +131,14 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
             int userAmtInt = Integer.parseInt(userAccountamt);
 
             int  toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
-
             int toaddamount = toAmountTransfer + userAmtInt ;
             int deduct = b - userAmtInt;
 
+            System.out.println(toaddamount);
+            System.out.println(deduct);
 
-            MainActivity.newuser[userAccInt].setCheckacc(toaddamount);
-                      */
+            MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
+            MainActivity.newuser[userAccInt].setAccbal(toaddamount);
 
         }
 

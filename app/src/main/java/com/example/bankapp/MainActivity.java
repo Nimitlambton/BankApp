@@ -21,15 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
   
 
-    Button login;
+    Button login , load;
     EditText userName, password;
     TextView counterView;
     public static  String customername;
     public static  Integer customerbalance;
     public static int userIndex;
     int counter = 3;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         counterView.setText("Numbers of turns left = " + Integer.toString(counter));
 
-        newuser[0] = new Users(18, 18445,0,1200,    2000,500,300,70,50,40,55,"Nimit96", "2901 kipligavenue", "Nimit","hello");
-        newuser[1] = new Users(23, 18445,1,1400, 3000,600,500,80,40,30,45,"parimal97", "2901 kipligavenue", "Parimal","hello2");
-        newuser[2] = new Users(22, 18445,2,1600,4000,700,300,55,90,88,105,"geeta93", "2901 kipligavenue", "Geeta","hello3");
+        //newuser[0] = new Users(18, 18445,0,1200,    2000,500,300,70,50,40,55,"Nimit96", "2901 kipligavenue", "Nimit","hello");
+        //newuser[1] = new Users(23, 18445,1,1400, 3000,600,500,80,40,30,45,"parimal97", "2901 kipligavenue", "Parimal","hello2");
+        //newuser[2] = new Users(22, 18445,2,1600,4000,700,300,55,90,88,105,"geeta93", "2901 kipligavenue", "Geeta","hello3");
 
 
     }
+
+
 
 
     public  void loginIn(View view) {
@@ -106,7 +106,13 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
+    public void load(View view) {
 
+        newuser[0] = new Users(18, 18445,0,1200,    2000,500,300,70,50,40,55,"Nimit96", "2901 kipligavenue", "Nimit","hello");
+        newuser[1] = new Users(23, 18445,1,1400, 3000,600,500,80,40,30,45,"parimal97", "2901 kipligavenue", "Parimal","hello2");
+        newuser[2] = new Users(22, 18445,2,1600,4000,700,300,55,90,88,105,"geeta93", "2901 kipligavenue", "Geeta","hello3");
+
+    }
 }
 
 
