@@ -1,5 +1,7 @@
 package com.example.bankapp;
 
+import java.util.ArrayList;
+
 public class Users {
 
 
@@ -18,6 +20,7 @@ public class Users {
     int hyrdo;
     int water;
     int gas;
+    ArrayList<String> transactions = new ArrayList<>();
 
     public Users(int age, int sin, int userId, int accbal, int checkacc, int cCbalance, int bills, int hyrdo, int water, int gas, int phonebill, String userName, String address, String name, String password) {
         this.age = age;

@@ -29,6 +29,7 @@ public class payUtilityAct extends AppCompatActivity implements AdapterView.OnIt
     int deduct;
     int fromAcc;
     int value;
+    ArrayList<String> paybills = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,20 +78,24 @@ public class payUtilityAct extends AppCompatActivity implements AdapterView.OnIt
         if(position==0){
             finalamt.setText("Your Amount"+MainActivity.newuser[MainActivity.userIndex].getHyrdo());
             deduct = MainActivity.newuser[MainActivity.userIndex].getHyrdo();
-            value =     getvalue(position);
+            value =  getvalue(position);
+            paybills.add("paid $" + MainActivity.newuser[MainActivity.userIndex].getHyrdo() + "for hydro");
 
         }else if(position == 1){
             finalamt.setText("Your Amount "+MainActivity.newuser[MainActivity.userIndex].getWater());
             deduct = MainActivity.newuser[MainActivity.userIndex].getWater();
             value =     getvalue(position);
+            paybills.add("paid $" + MainActivity.newuser[MainActivity.userIndex].getWater() + "for water");
         }else if(position == 2){
             finalamt.setText("Your Amount "+MainActivity.newuser[MainActivity.userIndex].getGas());
             deduct = MainActivity.newuser[MainActivity.userIndex].getGas();
             value =     getvalue(position);
+            paybills.add("paid $" + MainActivity.newuser[MainActivity.userIndex].getGas() + "for Gas");
         }else if(position == 3){
             finalamt.setText("Your Amount "+MainActivity.newuser[MainActivity.userIndex].getPhonebill());
             deduct = MainActivity.newuser[MainActivity.userIndex].getPhonebill();
             value =     getvalue(position);
+            paybills.add("paid $" + MainActivity.newuser[MainActivity.userIndex].getPhonebill() + "for PhoneBill");
         }
 
     }
