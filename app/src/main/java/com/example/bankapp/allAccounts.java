@@ -3,6 +3,7 @@ package com.example.bankapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class    allAccounts extends AppCompatActivity {
@@ -10,6 +11,9 @@ public class    allAccounts extends AppCompatActivity {
 
     TextView showbal1,showbal2,showbal3;
     Integer currentuser;
+
+    ListView listv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,5 +31,8 @@ public class    allAccounts extends AppCompatActivity {
         showbal2.setText(""+MainActivity.newuser[currentuser].getAccbal());
 
         showbal3.setText(""+MainActivity.newuser[currentuser].getcCbalance());
+
+        listv = findViewById(R.id.listView);
+        
     }
 }

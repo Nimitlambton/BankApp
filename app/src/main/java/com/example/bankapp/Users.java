@@ -20,9 +20,13 @@ public class Users {
     int hyrdo;
     int water;
     int gas;
+    int phonebill;
+
     ArrayList<String> transactions = new ArrayList<>();
 
-    public Users(int age, int sin, int userId, int accbal, int checkacc, int cCbalance, int bills, int hyrdo, int water, int gas, int phonebill, String userName, String address, String name, String password) {
+
+
+    public Users(int age, int sin, int userId, int accbal, int checkacc, int cCbalance, int bills, int hyrdo, int water, int gas, int phonebill, String userName, String address, String name, String password,String email) {
         this.age = age;
         Sin = sin;
         this.userId = userId;
@@ -38,27 +42,13 @@ public class Users {
         this.address = address;
         Name = name;
         this.password = password;
+        this.email = email;
+
     }
 
-    int phonebill;
 
-/*
-    public Users(int age, int sin, int userId, int accbal, int checkacc, int cCbalance, int bills, String userName, String address, String name, String password) {
-        this.age = age;
-        Sin = sin;
-        this.userId = userId;
-        this.accbal = accbal;
-        this.checkacc = checkacc;
-        this.cCbalance = cCbalance;
-        this.bills = bills;
-        this.userName = userName;
-        this.address = address;
-        Name = name;
-        this.password = password;
-    }
 
-  */
-
+    String email;
     String userName;
     String address;
     String Name;
@@ -202,6 +192,14 @@ public class Users {
 
     public void setPhonebill(int phonebill) {
         this.phonebill = phonebill;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 

@@ -168,6 +168,12 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
                      MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
                      MainActivity.newuser[userAccInt].setAccbal(toaddamount);
                      Toast.makeText(getApplicationContext(), "succesfully tranferred", Toast.LENGTH_LONG).show();
+
+
+                     JavaMailApi javaMailApi = new JavaMailApi(this,"geetaarora961@gmail.com","hello","test");
+
+                     javaMailApi.execute();
+
                  }
              }
              else{

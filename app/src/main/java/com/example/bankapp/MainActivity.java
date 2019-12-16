@@ -108,9 +108,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void load(View view) {
 
-        newuser[0] = new Users(18, 18445,0,1200,    2000,500,300,70,50,40,55,"Nimit96", "2901 kipligavenue", "Nimit","hello");
-        newuser[1] = new Users(23, 18445,1,1400, 3000,600,500,80,40,30,45,"parimal97", "2901 kipligavenue", "Parimal","hello2");
-        newuser[2] = new Users(22, 18445,2,1600,4000,700,300,55,90,88,105,"geeta93", "2901 kipligavenue", "Geeta","hello3");
+        newuser[0] = new Users(18, 18445,0,1200,    2000,500,300,70,50,40,55,"Nimit96", "2901 kipligavenue", "Nimit","hello","pamnainimit16@gmail.com");
+        newuser[1] = new Users(23, 18445,1,1400, 3000,600,500,80,40,30,45,"parimal97", "2901 kipligavenue", "Parimal","hello2","parimalpatel029@gmail.com");
+        newuser[2] = new Users(22, 18445,2,1600,4000,700,300,55,90,88,105,"geeta93", "2901 kipligavenue", "Geeta","hello3","geetaarora9612gmail.com");
 
     }
 }
