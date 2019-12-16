@@ -112,10 +112,10 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
                 int userAmtInt = Integer.parseInt(userAccountamt);
 
                 int toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
+
                 if(userAmtInt > toAmountTransfer){
 
                     Toast.makeText(getApplicationContext(), "not sufficent amount ", Toast.LENGTH_LONG).show();
-
 
                 }
                 else {
@@ -129,6 +129,9 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
 
                     MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
                     MainActivity.newuser[userAccInt].setAccbal(toaddamount);
+
+                    Toast.makeText(getApplicationContext(), "succesfully tranferred", Toast.LENGTH_LONG).show();
+
                 }
             }else{
 
@@ -152,15 +155,20 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
 
                  int userAmtInt = Integer.parseInt(userAccountamt);
                  int toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
-                 int toaddamount = toAmountTransfer + userAmtInt;
-                 int deduct = b - userAmtInt;
+                 if(userAmtInt > toAmountTransfer) {
+                     Toast.makeText(getApplicationContext(), "not sufficent amount ", Toast.LENGTH_LONG).show();
+                     }
+                 else {
 
-                 System.out.println(toaddamount);
-                 System.out.println(deduct);
 
-                 MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
-                 MainActivity.newuser[userAccInt].setAccbal(toaddamount);
-
+                     int toaddamount = toAmountTransfer + userAmtInt;
+                     int deduct = b - userAmtInt;
+                     System.out.println(toaddamount);
+                     System.out.println(deduct);
+                     MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
+                     MainActivity.newuser[userAccInt].setAccbal(toaddamount);
+                     Toast.makeText(getApplicationContext(), "succesfully tranferred", Toast.LENGTH_LONG).show();
+                 }
              }
              else{
 
