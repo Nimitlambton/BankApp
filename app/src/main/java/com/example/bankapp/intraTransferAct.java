@@ -23,20 +23,21 @@ import java.util.List;
 public class intraTransferAct extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 
-    Spinner to , from;
+    Spinner to, from;
     EditText amt;
     int type;
     int type2;
     List<String> Acoounttype = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //for (int i=0; i<MainActivity.newuser.length;i++)
 
-        Acoounttype.add("cheqing(with balance  "+ MainActivity.newuser[MainActivity.userIndex].getCheckacc()+")");
-        Acoounttype.add("saving (with balance  "+ MainActivity.newuser[MainActivity.userIndex].getAccbal()+")");
-       // Acoounttype.add("credit");
+        Acoounttype.add("cheqing(with balance  " + MainActivity.newuser[MainActivity.userIndex].getCheckacc() + ")");
+        Acoounttype.add("saving (with balance  " + MainActivity.newuser[MainActivity.userIndex].getAccbal() + ")");
+        // Acoounttype.add("credit");
 
         setContentView(R.layout.activity_intra_transfer);
         to = findViewById(R.id.to);
@@ -44,10 +45,8 @@ public class intraTransferAct extends AppCompatActivity implements AdapterView.O
         amt = findViewById(R.id.amount);
 
 
-
-
         //create an adapter and fill it from the list
-        ArrayAdapter<String> billAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,Acoounttype);
+        ArrayAdapter<String> billAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, Acoounttype);
         //make the drop down style
         billAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         //fill the spinner with the adapter items
@@ -57,8 +56,8 @@ public class intraTransferAct extends AppCompatActivity implements AdapterView.O
         from.setOnItemSelectedListener(this);
 
 
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -71,7 +70,7 @@ public class intraTransferAct extends AppCompatActivity implements AdapterView.O
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        if(item.getItemId() == R.id.signOut){
+        if (item.getItemId() == R.id.signOut) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             return true;
@@ -84,12 +83,12 @@ public class intraTransferAct extends AppCompatActivity implements AdapterView.O
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-        if (adapterView.getId() == R.id.to){
+        if (adapterView.getId() == R.id.to) {
 
-         type = getpositon(i);
+            type = getpositon(i);
 
-        }else if( adapterView.getId() == R.id.From) {
-            System.out.println("second spinner"+i);
+        } else if (adapterView.getId() == R.id.From) {
+            System.out.println("second spinner" + i);
             type2 = getpositon(i);
         }
 
@@ -112,105 +111,102 @@ public class intraTransferAct extends AppCompatActivity implements AdapterView.O
 
     public void trans(View view) {
 
-        int fromTrans; int toTrans;
-        if (view.getId()  == R.id.trans){
-
-//            if (type == 0) {
-//
-//                fromTrans = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
-//                System.out.println(fromTrans);
-//
-//
-//            }
-//            else if (type ==1 ){
-//
-//                fromTrans = MainActivity.newuser[MainActivity.userIndex].getAccbal();
-//                System.out.println(fromTrans);
-//            }
-//
-//       if(type2 == 0 )
-//       {
-//           fromTrans = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
-//           System.out.println(fromTrans);
-//       }
-//
-//       else if (type2 == 1){
-//
-//           fromTrans = MainActivity.newuser[MainActivity.userIndex].getAccbal();
-//           System.out.println(fromTrans);
-//       }
-
-       if (type == 1 && type2 == 1) {
-
-           System.out.println("cannot possible");
+        int fromTrans;
+        int toTrans;
+        if (view.getId() == R.id.trans) {
 
 
-       }
-       else if (type ==0 && type2 ==0){
+            if (type == 1 && type2 == 1) {
+
+                System.out.println("cannot transfer money within same type of account");
 
 
-           System.out.println("cannot possible");
-       }
+                Toast.makeText(getApplicationContext(), "cannot transfer money within same type of account", Toast.LENGTH_LONG).show();
 
-       else if (type == 0 && type2 ==1){
+            } else if (type == 0 && type2 == 0) {
 
-           int  finalamt = 0;
-           int finalamt2 = 0;
-           fromTrans = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
-           toTrans = MainActivity.newuser[MainActivity.userIndex].getAccbal();
-           System.out.println("from c to s");
 
-               String hello = String.valueOf(amt.getText());
-                 int result = Integer.parseInt(hello);
+                Toast.makeText(getApplicationContext(), "cannot transfer money within same type of account", Toast.LENGTH_LONG).show();
+            } else if (type == 0 && type2 == 1) {
 
-           if (result > fromTrans) {Toast.makeText(getApplicationContext(), "not sufficent amount ", Toast.LENGTH_LONG).show();
-           }
-           else{
-               finalamt = fromTrans - result;
-               finalamt2 = toTrans + result;
-               System.out.println(finalamt);
-               System.out.println(finalamt2);
-               MainActivity.newuser[MainActivity.userIndex].setAccbal(finalamt);
-               MainActivity.newuser[MainActivity.userIndex].setCheckacc(finalamt2);
-
-           }
-
-       }
-
-       else if (type ==1 && type2 ==0){
-           int  finalamt = 0;
-           int finalamt2 = 0;
-           fromTrans = MainActivity.newuser[MainActivity.userIndex].getAccbal();;
-           toTrans = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
-           System.out.println("from s to c");
-
-           String hello = String.valueOf(amt.getText());
-           int result = Integer.parseInt(hello);
-
-           if (result > fromTrans) {
-
-               Toast.makeText(getApplicationContext(), "not sufficent amount ", Toast.LENGTH_LONG).show();
-
-           }
+                int finalamt = 0;
+                int finalamt2 = 0;
+                fromTrans = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
+                toTrans = MainActivity.newuser[MainActivity.userIndex].getAccbal();
+                System.out.println("from c to s");
 
 
 
-           else {
+                String hello = String.valueOf(amt.getText());
+
+                if (hello.equals("")){
+
+                    Toast.makeText(getApplicationContext(), "please enter amount ", Toast.LENGTH_LONG).show();
+
+                }
+                else {
+
+                    int result = Integer.parseInt(hello);
+
+                    if (result > fromTrans) {
+                        Toast.makeText(getApplicationContext(), "not sufficent amount ", Toast.LENGTH_LONG).show();
+
+                    } else {
 
 
-               finalamt = fromTrans + result;
-               finalamt2 = toTrans - result;
-               System.out.println(finalamt);
-               System.out.println(finalamt2);
-               MainActivity.newuser[MainActivity.userIndex].setAccbal(finalamt);
-               MainActivity.newuser[MainActivity.userIndex].setCheckacc(finalamt2);
-           }
-       }
+                        finalamt = fromTrans - result;
+                        finalamt2 = toTrans + result;
+                        System.out.println(finalamt);
+                        System.out.println(finalamt2);
+                        MainActivity.newuser[MainActivity.userIndex].setAccbal(finalamt);
+                        MainActivity.newuser[MainActivity.userIndex].setCheckacc(finalamt2);
 
+                    }
+                }
+
+            } else if (type == 1 && type2 == 0) {
+                int finalamt = 0;
+                int finalamt2 = 0;
+
+                fromTrans = MainActivity.newuser[MainActivity.userIndex].getAccbal();
+                ;
+                toTrans = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
+                System.out.println("from s to c");
+
+                String hello = String.valueOf(amt.getText());
+
+
+                if (hello.equals("")) {
+
+                    Toast.makeText(getApplicationContext(), "please enter amount ", Toast.LENGTH_LONG).show();
+
+                } else {
+
+
+                    int result = Integer.parseInt(hello);
+
+
+                    if (result > fromTrans) {
+
+                        Toast.makeText(getApplicationContext(), "not sufficent amount ", Toast.LENGTH_LONG).show();
+
+                    } else {
+
+
+                        finalamt = fromTrans + result;
+                        finalamt2 = toTrans - result;
+                        System.out.println(finalamt);
+                        System.out.println(finalamt2);
+                        MainActivity.newuser[MainActivity.userIndex].setAccbal(finalamt);
+                        MainActivity.newuser[MainActivity.userIndex].setCheckacc(finalamt2);
+                    }
+                }
+
+
+            }
 
 
         }
-
-
     }
+
 }

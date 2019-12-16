@@ -102,11 +102,19 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
 
 
             String userAccountno  =  String.valueOf(acNo.getText());
-            userAccInt = Integer.parseInt(userAccountno);
+
+
+            userAccInt = !userAccountno.equals("")?Integer.parseInt(userAccountno):-1;   ;
+
+
 
             String userAccountamt  =  String.valueOf(amt.getText());
-            int userAmtInt = Integer.parseInt(userAccountamt);
 
+
+            if (userAccInt >= 0 && userAccInt< MainActivity.newuser.length -1 )
+            {
+
+                int userAmtInt = Integer.parseInt(userAccountamt);
 
 
                 int toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
@@ -119,6 +127,22 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
                 MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
                 MainActivity.newuser[userAccInt].setAccbal(toaddamount);
 
+
+
+
+
+            }else{
+                Toast.makeText(this, "Wrong account number", Toast.LENGTH_SHORT).show();
+            }
+
+            if (userAccountamt.equals("") )
+
+            {
+
+                Toast.makeText(getApplicationContext(), "please enter amount", Toast.LENGTH_LONG).show();
+
+
+            }
 
         }
 
