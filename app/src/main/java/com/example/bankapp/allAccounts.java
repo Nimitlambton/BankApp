@@ -33,6 +33,9 @@ public class    allAccounts extends AppCompatActivity {
         showbal3.setText(""+MainActivity.newuser[currentuser].getcCbalance());
 
         listv = findViewById(R.id.listView);
+
+        this.setTitle("All Accounts");
+
         
     }
 }

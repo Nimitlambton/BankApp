@@ -30,7 +30,8 @@ public class SelectAcc extends AppCompatActivity {
 
         welcomebanner = findViewById(R.id.welcomeBanner);
 
-        welcomebanner.setText("HI "+MainActivity.customername+" please select the folloing");
+        welcomebanner.setText("HI "+MainActivity.customername+" please select one of the following");
+        this.setTitle("Select");
 
 
     }

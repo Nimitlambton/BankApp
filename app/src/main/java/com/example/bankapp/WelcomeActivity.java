@@ -30,7 +30,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         tv.setText("your account balance"+MainActivity.newuser[currentuser].getAccbal());
 
-
+        //this.setTitle("Select"+);
 
     }
 

@@ -56,7 +56,7 @@ public class intraTransferAct extends AppCompatActivity implements AdapterView.O
         to.setOnItemSelectedListener(this);
         from.setAdapter(billAdapter);
         from.setOnItemSelectedListener(this);
-
+        this.setTitle("Transfer");
 
     }
 

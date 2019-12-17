@@ -23,6 +23,8 @@ public class TransferAct extends AppCompatActivity {
     transferIntra = findViewById(R.id.intra);
     transferOtherAcc = findViewById(R.id.external);
 
+        this.setTitle("Select Transfer");
+
     }
 
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public static  Integer customerbalance;
     public static int userIndex;
     int counter = 3;
-
+    ImageView img;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +39,8 @@ public class MainActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         password = findViewById(R.id.password);
         counterView.setText("Numbers of turns left = " + Integer.toString(counter));
-
-        //newuser[0] = new Users(18, 18445,0,1200,    2000,500,300,70,50,40,55,"Nimit96", "2901 kipligavenue", "Nimit","hello");
-        //newuser[1] = new Users(23, 18445,1,1400, 3000,600,500,80,40,30,45,"parimal97", "2901 kipligavenue", "Parimal","hello2");
-        //newuser[2] = new Users(22, 18445,2,1600,4000,700,300,55,90,88,105,"geeta93", "2901 kipligavenue", "Geeta","hello3");
-
+         img = findViewById(R.id.imageView);
+         img.setImageResource(R.drawable.bank);
 
     }
 

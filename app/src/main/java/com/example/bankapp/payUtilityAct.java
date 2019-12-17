@@ -49,6 +49,9 @@ public class payUtilityAct extends AppCompatActivity implements AdapterView.OnIt
         //fill the spinner with the adapter items
         spin.setAdapter(billAdapter);
         spin.setOnItemSelectedListener(this);
+
+
+        this.setTitle("pay bills");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,23 +79,23 @@ public class payUtilityAct extends AppCompatActivity implements AdapterView.OnIt
 
 
         if(position==0){
-            finalamt.setText("Your Amount"+MainActivity.newuser[MainActivity.userIndex].getHyrdo());
+            finalamt.setText("Amount to be paid "+MainActivity.newuser[MainActivity.userIndex].getHyrdo());
             deduct = MainActivity.newuser[MainActivity.userIndex].getHyrdo();
             value =  getvalue(position);
             paybills.add("paid $" + MainActivity.newuser[MainActivity.userIndex].getHyrdo() + "for hydro");
 
         }else if(position == 1){
-            finalamt.setText("Your Amount "+MainActivity.newuser[MainActivity.userIndex].getWater());
+            finalamt.setText("Amount to be paid "+MainActivity.newuser[MainActivity.userIndex].getWater());
             deduct = MainActivity.newuser[MainActivity.userIndex].getWater();
             value =     getvalue(position);
             paybills.add("paid $" + MainActivity.newuser[MainActivity.userIndex].getWater() + "for water");
         }else if(position == 2){
-            finalamt.setText("Your Amount "+MainActivity.newuser[MainActivity.userIndex].getGas());
+            finalamt.setText("Amount to be paid "+MainActivity.newuser[MainActivity.userIndex].getGas());
             deduct = MainActivity.newuser[MainActivity.userIndex].getGas();
             value =     getvalue(position);
             paybills.add("paid $" + MainActivity.newuser[MainActivity.userIndex].getGas() + "for Gas");
         }else if(position == 3){
-            finalamt.setText("Your Amount "+MainActivity.newuser[MainActivity.userIndex].getPhonebill());
+            finalamt.setText("Amount to be paid "+MainActivity.newuser[MainActivity.userIndex].getPhonebill());
             deduct = MainActivity.newuser[MainActivity.userIndex].getPhonebill();
             value =     getvalue(position);
             paybills.add("paid $" + MainActivity.newuser[MainActivity.userIndex].getPhonebill() + "for PhoneBill");

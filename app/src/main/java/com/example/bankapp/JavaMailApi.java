@@ -37,7 +37,7 @@ public class JavaMailApi extends AsyncTask<Void,Void,Void> {
     protected void onPreExecute() {
         super.onPreExecute();
         //Show progress dialog while sending email
-        mProgressDialog = ProgressDialog.show(mContext,"Sending message", "Please wait...",false,false);
+        mProgressDialog = ProgressDialog.show(mContext,"Transfer amount ", "Please wait...",false,false);
     }
 
     @Override

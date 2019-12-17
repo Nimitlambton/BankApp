@@ -42,7 +42,6 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extranal_transfer);
         type = findViewById(R.id.acTypeSpin);
-        balance = findViewById(R.id.bal);
         transfer = findViewById(R.id.transfer);
         acNo = findViewById(R.id.acNo);
         amt = findViewById(R.id.amt);
@@ -55,6 +54,8 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
         arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         type.setAdapter(arrayAdapter);
         type.setOnItemSelectedListener(this);
+
+        this.setTitle("Transfer");
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
