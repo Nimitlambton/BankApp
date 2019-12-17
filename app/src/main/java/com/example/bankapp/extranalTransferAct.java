@@ -30,6 +30,7 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
     TextView balance;
     int a = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
     int b = MainActivity.newuser[MainActivity.userIndex].getAccbal();
+    String email = MainActivity.newuser[MainActivity.userIndex].getEmail();
     int position1;
     int type0;
     int type1;
@@ -123,13 +124,10 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
                     toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
                     int toaddamount = toAmountTransfer + userAmtInt;
                     int deduct = a - userAmtInt;
-
                     System.out.println(toaddamount);
                     System.out.println(deduct);
-
                     MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
                     MainActivity.newuser[userAccInt].setAccbal(toaddamount);
-
                     Toast.makeText(getApplicationContext(), "succesfully tranferred", Toast.LENGTH_LONG).show();
 
                 }
@@ -168,10 +166,8 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
                      MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
                      MainActivity.newuser[userAccInt].setAccbal(toaddamount);
                      Toast.makeText(getApplicationContext(), "succesfully tranferred", Toast.LENGTH_LONG).show();
-
-
-                     JavaMailApi javaMailApi = new JavaMailApi(this,"geetaarora961@gmail.com","hello","test");
-
+                     String email = MainActivity.newuser[userAccInt].getEmail();
+                     JavaMailApi javaMailApi = new JavaMailApi(this,email,"Transaction alert","test");
                      javaMailApi.execute();
 
                  }
