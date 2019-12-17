@@ -28,8 +28,8 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
     Spinner type;
     EditText amt , acNo;
     TextView balance;
-    int a = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
-    int b = MainActivity.newuser[MainActivity.userIndex].getAccbal();
+    int checkingaccountofcurrentuser = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
+    int savingaccountofcurrentuser = MainActivity.newuser[MainActivity.userIndex].getAccbal();
     String email = MainActivity.newuser[MainActivity.userIndex].getEmail();
     int position1;
     int type0;
@@ -41,17 +41,16 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extranal_transfer);
-
         type = findViewById(R.id.acTypeSpin);
         balance = findViewById(R.id.bal);
         transfer = findViewById(R.id.transfer);
         acNo = findViewById(R.id.acNo);
         amt = findViewById(R.id.amt);
-
-
         List<String> accounts = new ArrayList<>();
-        accounts.add("cheqing(with balance  "+ MainActivity.newuser[MainActivity.userIndex].getCheckacc()+")");
+        
         accounts.add("saving (with balance  "+ MainActivity.newuser[MainActivity.userIndex].getAccbal()+")");
+        accounts.add("cheqing(with balance  "+ MainActivity.newuser[MainActivity.userIndex].getCheckacc()+")");
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item,accounts);
         arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         type.setAdapter(arrayAdapter);
@@ -68,7 +67,6 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
-
         if(item.getItemId() == R.id.signOut){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
@@ -78,8 +76,6 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
     }
 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
         if (adapterView.getId() == R.id.acTypeSpin){
 
             type0 = getpositon(i);
@@ -99,36 +95,51 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
 
     public void TransferFunc(View view) {
 
-        if (type0 == 0) {
 
+        if (type0 == 0) {
 
             String userAccountno  =  String.valueOf(acNo.getText());
             userAccInt = !userAccountno.equals("")?Integer.parseInt(userAccountno):-1;   ;
             String userAccountamt  =  String.valueOf(amt.getText());
 
-
-            if (userAccInt >= 0 && userAccInt< MainActivity.newuser.length  )
+            if (userAccInt >= 0)
             {
-
                 int userAmtInt = Integer.parseInt(userAccountamt);
-
                 int toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
-
-                if(userAmtInt > toAmountTransfer){
+                if(userAmtInt > savingaccountofcurrentuser){
 
                     Toast.makeText(getApplicationContext(), "not sufficent amount ", Toast.LENGTH_LONG).show();
 
                 }
                 else {
 
+
                     toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
+
                     int toaddamount = toAmountTransfer + userAmtInt;
-                    int deduct = a - userAmtInt;
+
+
+                    int deduct = savingaccountofcurrentuser - userAmtInt;
+
                     System.out.println(toaddamount);
                     System.out.println(deduct);
-                    MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
+
+                    MainActivity.newuser[MainActivity.userIndex].setAccbal(deduct);
                     MainActivity.newuser[userAccInt].setAccbal(toaddamount);
+
+
+
+
                     Toast.makeText(getApplicationContext(), "succesfully tranferred", Toast.LENGTH_LONG).show();
+                    
+                    String email = MainActivity.newuser[userAccInt].getEmail();
+
+                    JavaMailApi javaMailApi = new JavaMailApi(this,email,"Transaction alert","Hi user" +
+                            "This is automated email from Citizen bank "+
+                            "your bank has been credited with"+userAmtInt+"/n"+"your updated balance is"+toaddamount+ "sent by "  + MainActivity.customername);
+                    javaMailApi.execute();
+
+
 
                 }
             }else{
@@ -143,7 +154,10 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
             }
         }
 
-        else {
+
+
+
+        else  if (type0 == 1)  {
 
             String userAccountno = String.valueOf(acNo.getText());
             userAccInt = !userAccountno.equals("") ? Integer.parseInt(userAccountno) : -1;
@@ -153,21 +167,25 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
 
                  int userAmtInt = Integer.parseInt(userAccountamt);
                  int toAmountTransfer = MainActivity.newuser[userAccInt].getAccbal();
-                 if(userAmtInt > toAmountTransfer) {
+                 if(userAmtInt > checkingaccountofcurrentuser) {
                      Toast.makeText(getApplicationContext(), "not sufficent amount ", Toast.LENGTH_LONG).show();
                      }
                  else {
 
 
                      int toaddamount = toAmountTransfer + userAmtInt;
-                     int deduct = b - userAmtInt;
+                     int deduct = checkingaccountofcurrentuser - userAmtInt;
                      System.out.println(toaddamount);
                      System.out.println(deduct);
                      MainActivity.newuser[MainActivity.userIndex].setCheckacc(deduct);
                      MainActivity.newuser[userAccInt].setAccbal(toaddamount);
                      Toast.makeText(getApplicationContext(), "succesfully tranferred", Toast.LENGTH_LONG).show();
+
                      String email = MainActivity.newuser[userAccInt].getEmail();
-                     JavaMailApi javaMailApi = new JavaMailApi(this,email,"Transaction alert","test");
+
+                     JavaMailApi javaMailApi = new JavaMailApi(this,email,"Transaction alert","Hi user" +
+                             "This is automated email from Citizen bank "+
+                             "your bank has been credited with"+userAmtInt+"/n"+"your updated balance is"+toaddamount+ "sent by "  + MainActivity.customername);
                      javaMailApi.execute();
 
                  }
@@ -180,7 +198,8 @@ public class extranalTransferAct extends AppCompatActivity implements AdapterVie
 
             if (userAccountamt.equals("") )
 
-            { Toast.makeText(getApplicationContext(), "please enter amount", Toast.LENGTH_LONG).show();
+            {
+                Toast.makeText(getApplicationContext(), "please enter amount", Toast.LENGTH_LONG).show();
             }
 
 

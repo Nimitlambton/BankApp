@@ -114,6 +114,8 @@ public class payUtilityAct extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void pay(View view) {
+
+
        if (view.getId()  == R.id.payB){
 
            amount = fromAcc-deduct;
@@ -127,6 +129,18 @@ public class payUtilityAct extends AppCompatActivity implements AdapterView.OnIt
                MainActivity.newuser[MainActivity.userIndex].setHyrdo(0);
                finalamt.setText(""+MainActivity.newuser[MainActivity.userIndex].getHyrdo());
               Toast.makeText(this, "Paid Hydro Bill Successfully", Toast.LENGTH_SHORT).show();
+
+               String email = MainActivity.newuser[MainActivity.userIndex].getEmail();
+
+//               JavaMailApi javaMailApi = new JavaMailApi(this,email,"Transaction alert","Hi user" +
+//                       "This is automated email from Citizen bank "+
+//                       //"your bank has been credited with"+deduct+"/n"+"your updated balance is"+toaddamount+ "sent by "  + MainActivity.customername);
+//               javaMailApi.execute();
+
+
+
+
+
            }else if(value == 1 ){
                System.out.println(value+"idrse");
                MainActivity.newuser[MainActivity.userIndex].setWater(0);

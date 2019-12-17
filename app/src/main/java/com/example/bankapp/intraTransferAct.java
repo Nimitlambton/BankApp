@@ -129,16 +129,16 @@ public class intraTransferAct extends AppCompatActivity implements AdapterView.O
 
 
                 Toast.makeText(getApplicationContext(), "cannot transfer money within same type of account", Toast.LENGTH_LONG).show();
+
             } else if (type == 0 && type2 == 1) {
 
                 int finalamt = 0;
                 int finalamt2 = 0;
+
                 fromTrans = MainActivity.newuser[MainActivity.userIndex].getCheckacc();
                 toTrans = MainActivity.newuser[MainActivity.userIndex].getAccbal();
+
                 System.out.println("from c to s");
-
-
-
                 String hello = String.valueOf(amt.getText());
 
                 if (hello.equals("")){
